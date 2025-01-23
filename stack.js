@@ -1,28 +1,37 @@
-class Stack {
-    constructor() {
-        this.stack = []
+class ArrayStack {
+    constructor(size) {
+        this.stack = new Array(size);
+        this.top = -1;
     }
 
     isEmpty() {
-        return this.stack.length === 0;
+        return this.top === -1;
     }
 
     push(data) {
-        this.stack.push(data)
+        if (this.top === this.stack.length - 1) {
+           throw new Error("Stack is full");
+        }
+
+        this.stack[++this.top] = data;
     }
 
     pop() {
         if (this.isEmpty()) {
-            throw new Error('Stack is empty')
+            throw new Error('Stack is empty');
         }
-        return this.stack.pop()
+        
+        const data = this.stack[this.top];
+        this.stack[this.top--] = null;
+
+        return data
     }
 
     peek() {
         if (this.isEmpty()) {
-            throw new Error('Stack is empty')
+            throw new Error('Stack is empty');
         }
 
-        return this.stack[this.stack.length -1]
+        return this.stack[this.top];
     }
 }
