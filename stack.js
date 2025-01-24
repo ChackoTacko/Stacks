@@ -84,7 +84,7 @@ class Node {
 }
 class LinkedListStack {
     constructor() {
-        this.top = null;
+        this.top = null
     }
 
     isEmpty() {
@@ -95,8 +95,6 @@ class LinkedListStack {
         if (this.isEmpty()) {
             throw new Error('Stack is empty');
         }
-
-        return this.top.data;
     }
 
     pop() {
@@ -104,14 +102,14 @@ class LinkedListStack {
             throw new Error('Stack is empty');
         }
 
-        const item = this.top.data;
-        this.top = this.top.next
-        return item;
+        const data = this.top.data;
+        this.top = this.top.next;
+        return data;
     }
 
     push(item) {
         const node = new Node(item);
-        node.next = this.top
+        node.next = this.top;
         this.top = node;
     }
 }
