@@ -46,12 +46,14 @@ class Stack {
 }
 
 class Solution {
+    // Time Complexity - O(log2(num))
+    // Space Complexity - O(log2(num))
     decimalToBinary(num) {
         let binaryString = '';
         let quotient = num;
         const stack = new Stack()
 
-        while (quotient !== 0) {
+        while (quotient > 0) {
             stack.push(quotient % 2);
             quotient = Math.floor(quotient / 2);
         } 
