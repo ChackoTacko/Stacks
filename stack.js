@@ -113,3 +113,8 @@ class LinkedListStack {
         this.top = node;
     }
 }
+
+module.exports = {
+    LinkedList: LinkedListStack,
+    Array: StandardArrayStack 
+}

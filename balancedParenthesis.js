@@ -1,82 +1,5 @@
-const { runTestCases } = require('../Test-Case-Functions')  
-
-class Node {
-    constructor(data) {
-        this.data = data;
-        this.next = null;
-    }
-}
-
-class LinkedListStack {
-    constructor() {
-        this.top = null;
-    } 
-
-    isEmpty() {
-        return this.top === null;
-    }
-
-    peek() {
-        if (this.isEmpty()) {
-            throw new Error('Stack is empty')
-        }
-
-        return this.top.data;
-    }
-
-    pop() {
-        if (this.isEmpty()) {
-            throw new Error('Stack is empty')
-        }
-
-        const data = this.top.data;
-        this.top = this.top.next;
-        return data;
-    }
-
-    push(item) {
-        const node = new Node(item);
-        node.next = this.top;
-        this.top = node;
-    } 
-}
-
-class ArrayStack {
-    constructor(size) {
-        this.stack = new Array(size);
-        this.top = -1;
-    }
-
-    isEmpty() {
-        return this.top === -1;
-    }
-
-    peek() {
-        if (this.isEmpty()) {
-            throw new Error('Stack is empty')
-        }
-
-        return this.stack[this.top]
-    }
-
-    pop() {
-        if (this.isEmpty()) {
-            throw new Error('Stack is empty')
-        }
-
-        const data = this.stack[this.top];
-        this.stack[this.top--] = null;
-        return data;
-    }
-
-    push(data) {
-        if (this.top === this.stack.length - 1) {
-            throw new Error('Stack is full')
-        }
-
-        this.stack[++this.top] = data;
-    }
-}
+const { runTestCases } = require('../Test-Case-Functions');
+const { Array } = require('./stack');
 
 class Solution {
     balancedParenthesis(s) {
@@ -90,7 +13,7 @@ class Solution {
         }
 
         const length = s.length;
-        const stack = new ArrayStack(length);
+        const stack = new Array(length);
         
         if (length % 2 !== 0) return false;
         
